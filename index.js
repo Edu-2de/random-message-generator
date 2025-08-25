@@ -78,7 +78,22 @@ function startMenu(){
       if (shouldContinue) loop();
     })
   }
-  loop();
+  
+  function choiceTypeLoop(){
+    showMenu()
+    rl.question("Choice: ", (choice) => {
+      if(choice === '1'){
+
+      }else if(choice == '2'){
+        loop()
+        return;
+      }else{
+        console.log("Invalid Option")
+      }
+    })
+  }
+
+  choiceTypeLoop()
 }
 
 startMenu();
