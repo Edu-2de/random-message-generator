@@ -39,7 +39,3 @@ console.log(generateMessage());
 ## Customization
 
 Feel free to edit the arrays and message structure to suit your style or theme!
-
-## License
-
-MIT
