@@ -26,6 +26,16 @@ function generateMessage(subjects, actions, places) {
 }
 
 
+function generateMessageWithName(subject, actions, places) {
+  const message = [
+    subject,
+    actions[Math.floor(Math.random() * actions.length)],
+    places[Math.floor(Math.random() * places.length)]
+  ].join(" ");
+  return message;
+}
+
+
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -50,22 +60,23 @@ function showMenuMessages(){
 
 function startMenu(){
   let shouldContinue = true;
+  let userName = "";
 
   const loopOption1 = () => {
     showMenuMessages();
     rl.question("Chose: ", (answer) => {
       switch(answer){
         case "1":
-          console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
+          console.log(generateMessageWithName(userName, astrologyActions, astrologyPlaces));
           break;
         case "2":
-          console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
+          console.log(generateMessageWithName(userName, motivationalActions, motivationalPlaces));
           break;
         case "3":
-          console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
+          console.log(generateMessageWithName(userName, jokeActions, jokePlaces));
           break;
         case "4":
-          console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
+          console.log(generateMessageWithName(userName, movieActions, moviePlaces));
           break;
         case "0":
           console.log("exit...");
@@ -75,7 +86,7 @@ function startMenu(){
         default:
           console.log("Invalid!");
       }
-      if (shouldContinue) loop();
+      if (shouldContinue) loopOption1();
     })
   }
 
@@ -111,7 +122,11 @@ function startMenu(){
     showMenu()
     rl.question("Choice: ", (choice) => {
       if(choice === '1'){
-
+        rl.question("Your name: ", (name) => {
+          userName = name;
+          loopOption1()
+        })
+        return;
       }else if(choice == '2'){
         loopOption2()
         return;
