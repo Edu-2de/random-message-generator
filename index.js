@@ -34,6 +34,13 @@ const rl = readline.createInterface({
 
 function showMenu(){
   console.log("\n=== MENU ===");
+  console.log("\nCHOSE WHAT YOU WANT")
+  console.log("1 - me")
+  console.log("2 - random")
+}
+
+function showMenuMessages(){
+  console.log("\n=== MENU ===");
   console.log("\nCHOSE THE MESSAGE TOPIC")
   console.log("1 - astrology")
   console.log("2 - motivational")
@@ -46,32 +53,67 @@ function startMenu(){
 
   const loop = () => {
     showMenu();
-    rl.question("Chose: ", (answer) => {
-      switch(answer){
-        case "1":
-          console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
-          break;
-        case "2":
-          console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
-          break;
-        case "3":
-          console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
-          break;
-        case "4":
-          console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
-          break;
-        case "0":
-          console.log("exit...");
-          shouldContinue = false;
-          rl.close();
-          return;
-        default:
-          console.log("Invalid!");
+    rl.question("Chose: ", (answer_type) => {
+      if(answer_type === '1'){
+        
+        showMenuMessages();
+        rl.question("Chose: ", (answer) => {
+          switch(answer){
+            case "1":
+              console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
+              break;
+            case "2":
+              console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
+              break;
+            case "3":
+              console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
+              break;
+            case "4":
+              console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
+              break;
+            case "0":
+              console.log("exit...");
+              shouldContinue = false;
+              rl.close();
+              return;
+            default:
+              console.log("Invalid!");
+          }
+          if (shouldContinue) loop();
+        })
+        loop();
+
+      }else if(answer_type === '2'){
+        showMenuMessages();
+        rl.question("Chose: ", (answer) => {
+          switch(answer){
+            case "1":
+              console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
+              break;
+            case "2":
+              console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
+              break;
+            case "3":
+              console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
+              break;
+            case "4":
+              console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
+              break;
+            case "0":
+              console.log("exit...");
+              shouldContinue = false;
+              rl.close();
+              return;
+            default:
+              console.log("Invalid!");
+          }
+          if (shouldContinue) loop();
+        })
+        loop();
       }
-      if (shouldContinue) loop();
-    })
+    });
   }
-  loop();
+
 }
 
 startMenu();
