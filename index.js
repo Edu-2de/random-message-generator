@@ -1,4 +1,4 @@
-import readline from "readline";
+const readline = require("readline");
 
 const astrologySubjects = ["The stars", "Your zodiac sign", "The full moon", "Mercury"];
 const astrologyActions = ["will guide", "will challenge", "will illuminate", "will influence"];
@@ -35,10 +35,10 @@ const rl = readline.createInterface({
 function showMenu(){
   console.log("\n=== MENU ===");
   console.log("\nCHOSE THE MESSAGE TOPIC")
-  console.log("\n1 - astrology")
-  console.log("\n2 - motivational")
-  console.log("\n3 - jokes")
-  console.log("\n4 - movie quotes")
+  console.log("1 - astrology")
+  console.log("2 - motivational")
+  console.log("3 - jokes")
+  console.log("4 - movie quotes")
 }
 
 function startMenu(){
@@ -50,16 +50,16 @@ function startMenu(){
       switch(answer){
         case "1":
           console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
-          loop();
+          break;
         case "2":
           console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
-          loop();
+          break;
         case "3":
           console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
-          loop();
+          break;
         case "4":
           console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
-          loop();
+          break;
         case "0":
           console.log("exit...");
           shouldContinue = false;
@@ -71,6 +71,7 @@ function startMenu(){
       if (shouldContinue) loop();
     })
   }
+  loop();
 }
 
 startMenu();
