@@ -51,7 +51,35 @@ function showMenuMessages(){
 function startMenu(){
   let shouldContinue = true;
 
-  const loop = () => {
+  const loopOption1 = () => {
+    showMenuMessages();
+    rl.question("Chose: ", (answer) => {
+      switch(answer){
+        case "1":
+          console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
+          break;
+        case "2":
+          console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
+          break;
+        case "3":
+          console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
+          break;
+        case "4":
+          console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
+          break;
+        case "0":
+          console.log("exit...");
+          shouldContinue = false;
+          rl.close();
+          return;
+        default:
+          console.log("Invalid!");
+      }
+      if (shouldContinue) loop();
+    })
+  }
+
+  const loopOption2 = () => {
     showMenuMessages();
     rl.question("Chose: ", (answer) => {
       switch(answer){
@@ -85,7 +113,7 @@ function startMenu(){
       if(choice === '1'){
 
       }else if(choice == '2'){
-        loop()
+        loopOption2()
         return;
       }else{
         console.log("Invalid Option")
