@@ -51,6 +51,11 @@ function startMenu(){
         case "1":
           console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
           break;
+        case "2":
+          console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
+          break;
+        case "3":
+          
       }
     })
   }
