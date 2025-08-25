@@ -55,33 +55,34 @@ function startMenu(){
     showMenu();
     rl.question("Chose: ", (answer_type) => {
       if(answer_type === '1'){
-        
-        showMenuMessages();
-        rl.question("Chose: ", (answer) => {
-          switch(answer){
-            case "1":
-              console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
-              break;
-            case "2":
-              console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
-              break;
-            case "3":
-              console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
-              break;
-            case "4":
-              console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
-              break;
-            case "0":
-              console.log("exit...");
-              shouldContinue = false;
-              rl.close();
-              return;
-            default:
-              console.log("Invalid!");
-          }
-          if (shouldContinue) loop();
+        rl.question("Type your name: ",(name) => {
+          showMenuMessages();
+          rl.question("Chose: ", (answer) => {
+            switch(answer){
+              case "1":
+                console.log(generateMessage(name, astrologyActions, astrologyPlaces));
+                break;
+              case "2":
+                console.log(generateMessage(name, motivationalActions, motivationalPlaces));
+                break;
+              case "3":
+                console.log(generateMessage(name, jokeActions, jokePlaces));
+                break;
+              case "4":
+                console.log(generateMessage(name, movieActions, moviePlaces));
+                break;
+              case "0":
+                console.log("exit...");
+                shouldContinue = false;
+                rl.close();
+                return;
+              default:
+                console.log("Invalid!");
+            }
+            if (shouldContinue) loop();
+          })
+          loop();
         })
-        loop();
 
       }else if(answer_type === '2'){
         showMenuMessages();
