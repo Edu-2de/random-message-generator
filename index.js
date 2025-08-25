@@ -50,13 +50,27 @@ function startMenu(){
       switch(answer){
         case "1":
           console.log(generateMessage(astrologySubjects, astrologyActions, astrologyPlaces));
-          break;
+          loop();
         case "2":
           console.log(generateMessage(motivationalSubjects, motivationalActions, motivationalPlaces));
-          break;
+          loop();
         case "3":
-          
+          console.log(generateMessage(jokeSubjects, jokeActions, jokePlaces));
+          loop();
+        case "4":
+          console.log(generateMessage(movieSubjects, movieActions, moviePlaces));
+          loop();
+        case "0":
+          console.log("exit...");
+          shouldContinue = false;
+          rl.close();
+          return;
+        default:
+          console.log("Invalid!");
       }
+      if (shouldContinue) loop();
     })
   }
 }
+
+startMenu();
